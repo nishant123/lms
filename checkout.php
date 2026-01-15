@@ -339,7 +339,7 @@ if(isset($_POST['form_payment'])) {
                                         $subtotal = $course['price'];
                                     ?>
                                 <?php endif; ?>
-                                <p>Price: $<?php echo $subtotal; ?></p>
+                                <p>Price: <?php echo $subtotal; ?></p>
                             </div>
                         </div>
                         <input type="hidden" name="course_id[]" value="<?php echo $course['id']; ?>">
@@ -355,7 +355,7 @@ if(isset($_POST['form_payment'])) {
 
                 <h2 class="mt_30">Order Summary</h2>
                 <div class="summary">
-                    <p>Total: $<?php echo $total; ?></p>
+                    <p>Total: <?php echo $total; ?></p>
                 </div>
 
                 <?php if($total != 0): ?>
@@ -371,6 +371,12 @@ if(isset($_POST['form_payment'])) {
                         <input class="form-check-input" type="radio" name="payment_method" id="stripe" value="stripe">
                         <label class="form-check-label" for="stripe">
                             Stripe
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="payment_method" id="cash" value="cash">
+                        <label class="form-check-label" for="cash">
+                            Cash
                         </label>
                     </div>
                 </div>

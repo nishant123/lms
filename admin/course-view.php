@@ -144,7 +144,7 @@ if(isset($_POST['form_publish'])) {
                                                     <?php echo $row['instructor_name']; ?>
                                                     </a>
                                                 </td>
-                                                <td style="<?php echo $style; ?>">$<?php echo $row['price']; ?></td>
+                                                <td style="<?php echo $style; ?>">Rs<?php echo $row['price']; ?></td>
                                                 <td class="pt_10 pb_10" style="<?php echo $style; ?>">
                                                     <a href="<?php echo ADMIN_URL; ?>course-detail.php?id=<?php echo $row['id']; ?>" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a>
                                                     <a href="<?php echo ADMIN_URL; ?>course-delete.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure?');"><i class="fas fa-trash"></i></a>

@@ -71,7 +71,7 @@ if(isset($_POST['form_remove_coupon'])) {
                                         <?php echo $course['title']; ?>
                                         </a>
                                     </td>
-                                    <td>$<?php echo $course['price']; ?></td>
+                                    <td><?php echo $course['price']; ?></td>
                                     <td>
                                         
                                         <?php if(isset($_SESSION['coupon'][$value])): ?>
