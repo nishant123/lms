@@ -1,0 +1,8 @@
+UPDATE `courses` SET `price` = '500', `price_old` = '700' WHERE `courses`.`id` = 3; UPDATE `courses` SET `price` = '500', `price_old` = '700' WHERE `courses`.`id` = 4; UPDATE `courses` SET `price` = '500', `price_old` = '700' WHERE `courses`.`id` = 7; UPDATE `courses` SET `price` = '500', `price_old` = '700' WHERE `courses`.`id` = 8; UPDATE `courses` SET `price_old` = '700' WHERE `courses`.`id` = 9;
+
+
+INSERT INTO `order_details` (`id`, `order_no`, `student_id`, `course_id`, `course_price`, `coupon_name`, `discount`, `final_price`, `instructor_revenue`, `admin_revenue`) VALUES (NULL, 'c02787dc9d', '8', '9', '500', '', '0', '500', '2.7', '6.3');
+
+INSERT INTO `order_details` (`id`, `order_no`, `student_id`, `course_id`, `course_price`, `coupon_name`, `discount`, `final_price`, `instructor_revenue`, `admin_revenue`) VALUES (NULL, 'c02787dc9d', '9', '9', '500', '', '0', '500', '2.7', '6.3');
+
+INSERT INTO `students` (`id`, `name`, `email`, `photo`, `password`, `phone`, `address`, `country`, `state`, `city`, `zip`, `token`, `status`) VALUES (NULL, 'student2', 'student2@gmail.com', NULL, '$2y$10$XdA3cKlpPuSP7QMiU71sNOCTlvrTSb0LS.SVrePVTBxV0qo8NJDJe', '9742478219', 'test', 'india', 'haryana', 'sonipat', '131001', 'b613c2fb23775538ae66e02ea5b7f776d39251aa28b8c3797f791c0b00f31805', '1');
