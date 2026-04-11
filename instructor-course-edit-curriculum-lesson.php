@@ -121,7 +121,7 @@ if(isset($_POST['form_lesson_add'])) {
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         if($_POST['lesson_type'] == 'video') {
             $new_total_video = $result[0]['total_video']+1;
-            $new_total_video_second = $result[0]['total_video_second'] + $duration_second;
+            $new_total_video_second = (int)$result[0]['total_video_second']+(int)$duration_second;
             $statement = $pdo->prepare("UPDATE modules SET total_video=?, total_video_second=? WHERE id=?");
             $statement->execute([$new_total_video,$new_total_video_second,$_POST['module_id']]);
         } else {
@@ -136,7 +136,7 @@ if(isset($_POST['form_lesson_add'])) {
         $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         if($_POST['lesson_type'] == 'video') {
             $new_total_video = $result[0]['total_video']+1;
-            $new_total_video_second = $result[0]['total_video_second'] + $duration_second;
+            $new_total_video_second = (int)$result[0]['total_video_second'] + (int)$duration_second;
             $statement = $pdo->prepare("UPDATE courses SET total_video=?, total_video_second=? WHERE id=?");
             $statement->execute([$new_total_video,$new_total_video_second,$_POST['course_id']]);
         } else {

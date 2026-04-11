@@ -55,7 +55,7 @@ if(!isset($_SESSION['student'])) {
                                             FROM order_details t1
                                             JOIN courses t2
                                             ON t1.course_id = t2.id
-                                            WHERE t1.student_id=? 
+                                            WHERE t1.status=1 and t1.student_id=? 
                                             ORDER BY t1.id ASC");
                             $statement->execute([$_SESSION['student']['id']]);
                             $result = $statement->fetchAll(PDO::FETCH_ASSOC);

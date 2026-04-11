@@ -99,7 +99,7 @@ if(isset($_POST['form_remove_coupon'])) {
                                             $discount = ($course['price'] * $coupon_data['discount_percentage']) / 100;
                                             $subtotal = $course['price'] - $discount;
                                             ?>
-                                            $<?php echo floor($subtotal); ?>
+                                            <?php echo floor($subtotal); ?>
                                         <?php else: ?>
                                             <?php $subtotal = $course['price']; ?>
                                             $<?php echo $subtotal; ?>

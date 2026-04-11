@@ -1,6 +1,12 @@
 
 <?php
-include "header.php"; 
+error_reporting(1);
+define("SMTP_HOST", "mail.veteranminds.in");
+define("SMTP_PORT", "587");
+define("SMTP_USERNAME", "");
+define("SMTP_PASSWORD", "");
+define("SMTP_ENCRYPTION", "tls");
+define("SMTP_FROM", "support@veteranminds.in");
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;

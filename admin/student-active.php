@@ -45,6 +45,7 @@
                                                 <td><?php echo $row['name']; ?></td>
                                                 <td><?php echo $row['email']; ?></td>
                                                 <td class="pt_10 pb_10">
+                                                     <a href="<?php echo BASE_URL; ?>loginstudent.php?email=<?php echo $row['email']; ?>" target="_blank" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i>Login</a>
                                                     <a href="<?php echo ADMIN_URL; ?>student-edit.php?id=<?php echo $row['id']; ?>" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
                                                     <a href="<?php echo ADMIN_URL; ?>student-delete.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm" onClick="return confirm('Are you sure?');"><i class="fas fa-trash"></i></a>
                                                 </td>

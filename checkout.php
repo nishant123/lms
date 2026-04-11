@@ -1,6 +1,11 @@
 <?php include "header.php"; ?>
+    
+<?php 
 
-<?php include "config/config_payment.php"; ?>
+// echo "0.1";
+include "config/config_payment.php";
+
+?>
 
 <?php
 if(!isset($_SESSION['student'])) {
@@ -30,6 +35,7 @@ if(!isset($_SESSION['cart_course_id'])) {
 <?php
 if(isset($_POST['form_enroll_free'])) {
     try {
+
         $i=0;
         foreach($_POST['course_id'] as $item) {
             $_SESSION['course_id'][$i] = $item;
@@ -56,7 +62,7 @@ if(isset($_POST['form_enroll_free'])) {
             $i++;
         }
         $_SESSION['total'] = $_POST['total'];
-
+  
         $order_no = substr(sha1(uniqid()), 0, 10);
             
         $statement = $pdo->prepare("INSERT INTO orders (
@@ -164,6 +170,7 @@ if(isset($_POST['form_enroll_free'])) {
 }
 if(isset($_POST['form_payment'])) {
     try {
+
         $i=0;
         foreach($_POST['course_id'] as $item) {
             $_SESSION['course_id'][$i] = $item;
@@ -204,6 +211,78 @@ if(isset($_POST['form_payment'])) {
             } else {
                 echo $response->getMessage();
             }
+        }
+         elseif($_POST['payment_method'] == 'cash') 
+        {
+             $order_no = substr(sha1(uniqid()), 0, 10);
+               $arr_course_id = [];
+        $arr_course_price = [];
+        $arr_coupon_name = [];
+        $arr_discount = [];
+        $arr_final_price = [];
+
+        $i=0;
+        foreach($_SESSION['course_id'] as $value) {
+            $arr_course_id[$i] = $value;
+            $i++;
+        }
+        $i=0;
+        foreach($_SESSION['course_price'] as $value) {
+            $arr_course_price[$i] = $value;
+            $i++;
+        }
+        $i=0;
+        foreach($_SESSION['coupon_name'] as $value) {
+            $arr_coupon_name[$i] = $value;
+            $i++;
+        }
+        $i=0;
+        foreach($_SESSION['discount'] as $value) {
+            $arr_discount[$i] = $value;
+            $i++;
+        }
+        $i=0;
+        foreach($_SESSION['final_price'] as $value) {
+            $arr_final_price[$i] = $value;
+            $i++;
+        }
+
+        for($i=0;$i<count($arr_course_id);$i++) {
+            $statement = $pdo->prepare("INSERT INTO order_details (
+                            order_no,
+                            student_id,
+                            course_id,
+                            course_price,
+                            coupon_name,
+                            discount,
+                            final_price,
+                            instructor_revenue,
+                            admin_revenue,
+                            status
+                        ) VALUES (?,?,?,?,?,?,?,?,?,?)");
+            $statement->execute([
+                            $order_no,
+                            $_SESSION['student']['id'],
+                            $arr_course_id[$i],
+                            $arr_course_price[$i],
+                            $arr_coupon_name[$i],
+                            $arr_discount[$i],
+                            $arr_final_price[$i],
+                            0,
+                            0,
+                            0
+                        ]);
+            
+            $statement = $pdo->prepare("SELECT * FROM courses WHERE id=?");
+            $statement->execute([$arr_course_id[$i]]);
+            $temp_course_data = $statement->fetch(PDO::FETCH_ASSOC);
+            $existing_total_student = $temp_course_data['total_student'];
+            $new_total_student = $existing_total_student + 1;
+            $statement = $pdo->prepare("UPDATE courses SET total_student=? WHERE id=?");
+            $statement->execute([$new_total_student, $arr_course_id[$i]]);
+        }
+           $_SESSION['success_message'] = "Enrollment is successful.";
+            header("location: ".BASE_URL."courses.php");
         }
         elseif($_POST['payment_method'] == 'stripe') 
         {

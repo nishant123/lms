@@ -765,9 +765,9 @@ if(isset($_POST['form_enquery'])) {
                             $final_price = $price - $discount;
                             $final_price = floor($final_price);
                             ?>
-                            $<?php echo $final_price; ?> <del>$<?php echo $course['price']; ?></del>
+                          Rs  <?php echo $final_price; ?> <del>  Rs<?php echo $course['price']; ?></del>
                         <?php else: ?>
-                            $<?php echo $course['price']; ?> <?php if($course['price_old']!=''): ?><del>$<?php echo $course['price_old']; ?></del><?php endif; ?>
+                           Rs <?php echo $course['price']; ?> <?php if($course['price_old']!=''): ?><del>Rs<?php echo $course['price_old']; ?></del><?php endif; ?>
                         <?php endif; ?>
                     </div>
                     <div class="cart-button">

@@ -58,6 +58,7 @@
             </li>
 
             <li class="<?php if($cur_page == 'order.php' || $cur_page == 'order-invoice.php') {echo 'active';} ?>"><a class="nav-link" href="<?php echo ADMIN_URL; ?>order.php"><i class="fas fa-file"></i> <span>Orders</span></a></li>
+            <li class="<?php if($cur_page == 'order.php' || $cur_page == 'orderdetail.php') {echo 'active';} ?>"><a class="nav-link" href="<?php echo ADMIN_URL; ?>orderdetail.php"><i class="fas fa-file"></i> <span>Orders detail</span></a></li>
 
             <li class="<?php if($cur_page == 'withdraw.php') {echo 'active';} ?>"><a class="nav-link" href="<?php echo ADMIN_URL; ?>withdraw.php"><i class="fas fa-file"></i> <span>Withdraws</span></a></li>
 
